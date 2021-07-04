@@ -1,5 +1,8 @@
 {
     "scripts": {
-        "start": "docker-compose build && docker-compose up -d"
+        "start": "docker-compose build && docker-compose up -d",
+        "test:server": "cd ums-server && npm test",
+        "test:client": "cd ums-client && npm test",
+        "test": "npm run test:client && npm run test:server"
     }
 }
