@@ -1,0 +1,22 @@
+.user-form{
+    padding: 2rem;
+
+    .card{
+        font-size: 42px;
+    }
+
+    .error-message{
+        font-size: 12px; font-weight: lighter; 
+        color: red;
+    }
+
+    .submit-btn{
+        display: grid;
+    }
+}
+
+.invalid{
+    ::ng-deep input{
+        border-color: red ;
+    }
+}

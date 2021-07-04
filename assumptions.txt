@@ -1,0 +1,23 @@
+○ Due to the project's simplicty I didn't use state management library.
+○ Used PrimeNG component library.
+○ Seperated the project into modules:
+   -coremodule - for the core, global aspects of the app
+   -primengModule - importing the desired components from primeng.
+   -sharedModule - exporting common used features like pipes and directives to other modules.
+   -usersModule - a lazy-loaded feature module encapsulating the parts responsible specific for the feature.
+  The seperation is designed to have good balance between performence and developer experience.
+○ Created abstract api service to communicate with the server, and used it in feature-specific service.
+○ Used onpush change detection strategy for better performence.
+○ Managed loading logic in the service, in order to keep the components as clean as possible, let them care about presantaion of the data. Ideally I would use a 
+  library like ngrx and handle that logic and other side effects there, leaving the service responsible only to communicate with server. 
+○ Pagination implemented in the serve side - suitable for large data set and faster page load.
+○ Implemented http caching using cache interceptor and 'global' cache service. Could be improved by abstracting the service and extend it for each entity we want
+  to cache - much easier to handle and manipulate the cache.
+○ Enforced email field uniqueness at the database level (using node package), in order to force more strictness and avoid simultaneous requests causing error.
+○ Encrypted password field inside user schema pre callback using bcrypt library, and set its default select behavior to false - to prevent it from showing in 
+  queries such as populate.
+○ Added generate&delete users option for testing.
+○ Used in-memory databse for server testing to write faster and easier tests.
+○ Had issue with test not ending in node. I made the error go away but think the problem still exist (jest did not exit after the test run has complete).
+○ Key point to improve - testing. Didn't dedicate enough time for it, and definitely should improve writing test.
+

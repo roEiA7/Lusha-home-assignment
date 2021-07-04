@@ -1,0 +1,33 @@
+{
+  "name": "ums",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "Stat:watch": "nodemon ./bin/www",
+    "startDev": "@powershell -Command $env:DEBUG='*';nodemon ./bin/www",
+    "test": "jest --runInBand --detectOpenHandles --config ./jest.config.json",
+    "test:watch": "npm run test -- --watchAll"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "faker": "^5.5.3",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mongoose": "^5.13.0",
+    "mongoose-paginate-v2": "^1.3.18",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.6",
+    "mongodb-memory-server": "^7.0.0",
+    "nodemon": "^2.0.9",
+    "supertest": "^6.1.3"
+  }
+}

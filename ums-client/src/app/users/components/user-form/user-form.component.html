@@ -1,0 +1,47 @@
+<form [formGroup]="userForm" class="p-fluid user-form" (ngSubmit)="submitForm()">
+
+    <div class="p-d-flex p-flex-column p-ai-center  ">
+        <h2>Add New User</h2>
+        <i class="pi pi-id-card card p-fluid"></i>
+    </div>
+
+
+    <div class="p-field p-mt-6">
+        <label>First Name</label>
+        <input type="text" pInputText formControlName="firstName">
+    </div>
+
+    <div class="p-field">
+        <label>Last Name</label>
+        <input type="text" pInputText formControlName="lastName">
+    </div>
+
+    <div class="p-field">
+        <label>Email</label>
+        <input type="text" pInputText formControlName="email">
+        <span class="error-message" *ngIf="email?.invalid">Invalid Email.</span>
+        <span class="error-message" *ngIf="dupEmail">Email alrady exist.</span>
+    </div>
+
+    <div class="p-field">
+        <label>Password</label>
+        <p-password [toggleMask]="true" formControlName="password" [class.invalid]="isPasswordInvalid"></p-password>
+        <span class="error-message" *ngIf="isPasswordInvalid">Minimum 8 characters and must contain at least one
+            uppercase, lowercase and
+            numeric.</span>
+    </div>
+
+    <div class="p-field">
+        <label>Description</label>
+        <textarea [rows]="5" [cols]="30" pInputTextarea [autoResize]="true" formControlName="description"></textarea>
+    </div>
+
+    <ng-container *myLet="loading$ | async as loading">
+        <button class="submit-btn" pButton type="submit" label="Submit" [disabled]="userForm.invalid || loading">
+            <i *ngIf="loading" class="pi pi-spin pi-spinner"></i>
+        </button>
+    </ng-container>
+
+</form>
+
+<p-toast></p-toast>

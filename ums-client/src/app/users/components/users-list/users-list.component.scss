@@ -1,0 +1,55 @@
+:host {
+
+    .card {
+        padding: 2rem; margin-bottom: 2rem;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+
+        .user-list-item {
+            width: 100%; padding: 1rem;
+    
+            .user-list-item-title{
+                font-size: 24px; font-weight: bold;
+    
+                .icon{
+                    font-size: 36px;
+                }
+            }
+        }
+        
+        .user-grid-item {
+            height: 95%; margin: .5em;
+            border: 1px solid #dee2e6;
+            text-align: center;
+    
+            .user-grid-item-title{
+                font-size: 24px; font-weight: bold;
+    
+                .icon{
+                    font-size: 36px;
+                }
+            }
+        
+            .user-grid-item-content {
+
+                span{
+                    text-overflow: ellipsis; overflow: hidden;
+                }
+
+
+            }
+        }
+    
+    }
+}
+
+// @media screen and (max-width: 576px) {
+// 	:host .user-list-item {
+// 		flex-direction: column; align-items: center;
+
+// 		.user-list-content {
+// 			flex-direction: column;
+// 		}
+
+// 	}
+// }

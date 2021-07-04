@@ -1,0 +1,72 @@
+<ng-container *myLet="usersPage$ | async as users">
+    <!-- *ngIf="usersPage$ | async as users; else loading" -->
+    <div class="card">
+        <p-dataView layout="grid" [value]="users?.docs" [paginator]="true" [rows]="15" [lazy]="true"
+            (onLazyLoad)="loadData($event)" [totalRecords]="users?.totalDocs" [loading]="(loading$ | async) || false"
+            emptyMessage="The system has no users.">
+
+            <ng-template pTemplate="header">
+                <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                    <div>
+                        <button class="p-m-1 p-button-text p-button-raised p-button-danger" pButton type="button"
+                            label="Delete Users" icon="pi pi-user-minus" (click)="deleteUsers()"></button>
+                        <button class="p-m-1 p-button-text p-button-raised" pButton type="button" label="Generate Users"
+                            icon="pi pi-users" (click)="generateUsers()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template let-user pTemplate="listItem">
+                <div class="p-col-12">
+                    <div class="user-list-item p-d-flex p-flex-column p-ai-center p-ai-sm-start">
+                        <div class="user-list-item-title">
+                            <i class="pi pi-user icon"></i> <span class="p-ml-2">{{user.firstName + ' ' +user.lastName
+                                }}</span>
+                        </div>
+                        <div class="p-d-flex p-flex-column p-flex-sm-row p-mt-4">
+
+                            <div>
+                                <i class="pi pi-envelope"></i>
+                                <span class="p-ml-2">{{user.email}}</span>
+                            </div>
+
+                            <div class="p-ml-sm-4">
+                                <i class="pi pi-ellipsis-h"></i>
+                                <span class="p-ml-2">{{user.description}}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template let-user pTemplate="gridItem">
+                <div class="p-col-12 p-md-4">
+                    <div class="user-grid-item card">
+                        <div class="user-grid-item-title p-d-flex p-flex-column p-ai-center">
+                            <i class="pi pi-user icon"></i> <span>{{user.firstName + ' ' +user.lastName }}</span>
+                        </div>
+
+                        <div class="user-grid-item-content">
+
+                            <div class="p-d-flex p-flex-column p-mt-4">
+                                <i class="pi pi-envelope"></i>
+                                <span>{{user.email}}</span>
+                            </div>
+
+                            <div class="p-d-flex p-flex-column p-mt-4">
+                                <i class="pi pi-ellipsis-h"></i>
+                                <span>{{user.description}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+        </p-dataView>
+
+    </div>
+</ng-container>
+
+<p-toast></p-toast>
